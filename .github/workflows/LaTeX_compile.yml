@@ -27,9 +27,8 @@ jobs:
         path: resume.pdf
 
     - name: Release PDF
-      uses: JasonEtco/upload-to-release@master
+      uses: ncipollo/release-action@v1
       with:
-        args: resume.pdf
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: "resume.pdf"
+        token: ${{ secrets.GITHUB_TOKEN }}
      
