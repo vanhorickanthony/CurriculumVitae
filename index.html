@@ -9,11 +9,11 @@
             Curriculum Vitae
         </title>
 
-        <script src="/pdfjs-2.4.456-es5-dist/build/pdf.js"></script>
+        <script src="build/pdf.js"></script>
 
         <script>
             (async () => {
-                const loadingTask = PDFJS.getDocument("https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf");
+                const loadingTask = pdfjsLib.getDocument("https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf");
                 const pdf = await loadingTask.promise;
 
                 // Load information from the first page.
