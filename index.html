@@ -1,49 +1,343 @@
-<!DOCTYPE html>
-<html>
+<html dir="ltr" mozdisallowselectionprint=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Anthony Van Horick   ·   Curriculum Vitae - resume.pdf</title>
 
-    <head>
+    <!-- This snippet is used in the Firefox extension (included from viewer.html) -->
+    <base href="resource://pdf.js/web/">
+    <script src="build/pdf.js"></script>
 
-        <meta charset="UTF-8">
 
-        <title>
-            Curriculum Vitae
-        </title>
+    <link rel="stylesheet" href="web/viewer.css">
 
-        <script src="build/pdf.js"></script>
 
-        <script>
-            (async () => {
-                const loadingTask = pdfjsLib.getDocument("https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf");
-                const pdf = await loadingTask.promise;
 
-                // Load information from the first page.
-                const page = await pdf.getPage(1);
+    <script src="web/viewer.js"></script>
 
-                const scale = 1;
-                const viewport = page.getViewport(scale);
+</head>
 
-                // Apply page dimensions to the <canvas> element.
-                const canvas = document.getElementById("pdf");
-                const context = canvas.getContext("2d");
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+<body tabindex="1" class="">
+<div id="outerContainer" class="sidebarMoving">
 
-                // Render the page into the <canvas> element.
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                await page.render(renderContext);
-                console.log("Page rendered!");
-            })();
-        </script>
+    <div id="sidebarContainer">
+        <div id="toolbarSidebar">
+            <div class="splitToolbarButton toggled">
+                <button id="viewThumbnail" class="toolbarButton toggled" title="Show Thumbnails" tabindex="2" data-l10n-id="thumbs">
+                    <span data-l10n-id="thumbs_label">Thumbnails</span>
+                </button>
+                <button id="viewOutline" class="toolbarButton" title="Show Document Outline (double-click to expand/collapse all items)" tabindex="3" data-l10n-id="document_outline" disabled="">
+                    <span data-l10n-id="document_outline_label">Document Outline</span>
+                </button>
+                <button id="viewAttachments" class="toolbarButton" title="Show Attachments" tabindex="4" data-l10n-id="attachments" disabled="">
+                    <span data-l10n-id="attachments_label">Attachments</span>
+                </button>
+            </div>
+        </div>
+        <div id="sidebarContent">
+            <div id="thumbnailView" class=""><a href="https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf#page=1" title="Page 1"><div class="thumbnail selected" data-page-number="1" data-loaded="true"><div class="thumbnailSelectionRing" style="width: 100px; height: 140px;"><img class="thumbnailImage" style="width: 98px; height: 138px;" src="data:image/png;base64,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" aria-label="Thumbnail of Page 1"></div></div></a><a href="https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf#page=2" title="Page 2"><div class="thumbnail" data-page-number="2" data-loaded="true"><div class="thumbnailSelectionRing" style="width: 100px; height: 140px;"><img class="thumbnailImage" style="width: 98px; height: 138px;" src="data:image/png;base64,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" aria-label="Thumbnail of Page 2"></div></div></a></div>
+            <div id="outlineView" class="hidden"></div>
+            <div id="attachmentsView" class="hidden"></div>
+        </div>
+        <div id="sidebarResizer" class=""></div>
+    </div>  <!-- sidebarContainer -->
 
-    </head>
+    <div id="mainContainer">
+        <div class="findbar hidden doorHanger" id="findbar">
+            <div id="findbarInputContainer">
+                <input id="findInput" class="toolbarField" title="Find" placeholder="Find in document…" tabindex="91" data-l10n-id="find_input">
+                <div class="splitToolbarButton">
+                    <button id="findPrevious" class="toolbarButton findPrevious" title="Find the previous occurrence of the phrase" tabindex="92" data-l10n-id="find_previous">
+                        <span data-l10n-id="find_previous_label">Previous</span>
+                    </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button id="findNext" class="toolbarButton findNext" title="Find the next occurrence of the phrase" tabindex="93" data-l10n-id="find_next">
+                        <span data-l10n-id="find_next_label">Next</span>
+                    </button>
+                </div>
+            </div>
 
-    <body>
+            <div id="findbarOptionsOneContainer">
+                <input type="checkbox" id="findHighlightAll" class="toolbarField" tabindex="94">
+                <label for="findHighlightAll" class="toolbarLabel" data-l10n-id="find_highlight">Highlight all</label>
+                <input type="checkbox" id="findMatchCase" class="toolbarField" tabindex="95">
+                <label for="findMatchCase" class="toolbarLabel" data-l10n-id="find_match_case_label">Match case</label>
+            </div>
+            <div id="findbarOptionsTwoContainer">
+                <input type="checkbox" id="findEntireWord" class="toolbarField" tabindex="96">
+                <label for="findEntireWord" class="toolbarLabel" data-l10n-id="find_entire_word_label">Whole words</label>
+                <span id="findResultsCount" class="toolbarLabel hidden"></span>
+            </div>
 
-    <canvas id="pdf"></canvas>
+            <div id="findbarMessageContainer">
+                <span id="findMsg" class="toolbarLabel"></span>
+            </div>
+        </div>  <!-- findbar -->
 
-    </body>
+        <div id="secondaryToolbar" class="secondaryToolbar hidden doorHangerRight">
+            <div id="secondaryToolbarButtonContainer">
+                <button id="secondaryPresentationMode" class="secondaryToolbarButton presentationMode visibleLargeView" title="Switch to Presentation Mode" tabindex="51" data-l10n-id="presentation_mode">
+                    <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+                </button>
 
-</html>
+                <button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" title="Open File" tabindex="52" data-l10n-id="open_file" hidden="true">
+                    <span data-l10n-id="open_file_label">Open</span>
+                </button>
+
+                <button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" title="Print" tabindex="53" data-l10n-id="print">
+                    <span data-l10n-id="print_label">Print</span>
+                </button>
+
+                <button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" title="Download" tabindex="54" data-l10n-id="download">
+                    <span data-l10n-id="download_label">Download</span>
+                </button>
+
+                <a href="https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf#page=1&amp;zoom=auto,-41,862" id="secondaryViewBookmark" class="secondaryToolbarButton bookmark visibleSmallView" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark">
+                    <span data-l10n-id="bookmark_label">Current View</span>
+                </a>
+
+                <div class="horizontalToolbarSeparator visibleLargeView"></div>
+
+                <button id="firstPage" class="secondaryToolbarButton firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page" disabled="">
+                    <span data-l10n-id="first_page_label">Go to First Page</span>
+                </button>
+                <button id="lastPage" class="secondaryToolbarButton lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page">
+                    <span data-l10n-id="last_page_label">Go to Last Page</span>
+                </button>
+
+                <div class="horizontalToolbarSeparator"></div>
+
+                <button id="pageRotateCw" class="secondaryToolbarButton rotateCw" title="Rotate Clockwise" tabindex="58" data-l10n-id="page_rotate_cw">
+                    <span data-l10n-id="page_rotate_cw_label">Rotate Clockwise</span>
+                </button>
+                <button id="pageRotateCcw" class="secondaryToolbarButton rotateCcw" title="Rotate Counterclockwise" tabindex="59" data-l10n-id="page_rotate_ccw">
+                    <span data-l10n-id="page_rotate_ccw_label">Rotate Counterclockwise</span>
+                </button>
+
+                <div class="horizontalToolbarSeparator"></div>
+
+                <button id="cursorSelectTool" class="secondaryToolbarButton selectTool toggled" title="Enable Text Selection Tool" tabindex="60" data-l10n-id="cursor_text_select_tool">
+                    <span data-l10n-id="cursor_text_select_tool_label">Text Selection Tool</span>
+                </button>
+                <button id="cursorHandTool" class="secondaryToolbarButton handTool" title="Enable Hand Tool" tabindex="61" data-l10n-id="cursor_hand_tool">
+                    <span data-l10n-id="cursor_hand_tool_label">Hand Tool</span>
+                </button>
+
+                <div class="horizontalToolbarSeparator"></div>
+
+                <button id="scrollVertical" class="secondaryToolbarButton scrollModeButtons scrollVertical toggled" title="Use Vertical Scrolling" tabindex="62" data-l10n-id="scroll_vertical">
+                    <span data-l10n-id="scroll_vertical_label">Vertical Scrolling</span>
+                </button>
+                <button id="scrollHorizontal" class="secondaryToolbarButton scrollModeButtons scrollHorizontal" title="Use Horizontal Scrolling" tabindex="63" data-l10n-id="scroll_horizontal">
+                    <span data-l10n-id="scroll_horizontal_label">Horizontal Scrolling</span>
+                </button>
+                <button id="scrollWrapped" class="secondaryToolbarButton scrollModeButtons scrollWrapped" title="Use Wrapped Scrolling" tabindex="64" data-l10n-id="scroll_wrapped">
+                    <span data-l10n-id="scroll_wrapped_label">Wrapped Scrolling</span>
+                </button>
+
+                <div class="horizontalToolbarSeparator scrollModeButtons"></div>
+
+                <button id="spreadNone" class="secondaryToolbarButton spreadModeButtons spreadNone toggled" title="Do not join page spreads" tabindex="65" data-l10n-id="spread_none">
+                    <span data-l10n-id="spread_none_label">No Spreads</span>
+                </button>
+                <button id="spreadOdd" class="secondaryToolbarButton spreadModeButtons spreadOdd" title="Join page spreads starting with odd-numbered pages" tabindex="66" data-l10n-id="spread_odd">
+                    <span data-l10n-id="spread_odd_label">Odd Spreads</span>
+                </button>
+                <button id="spreadEven" class="secondaryToolbarButton spreadModeButtons spreadEven" title="Join page spreads starting with even-numbered pages" tabindex="67" data-l10n-id="spread_even">
+                    <span data-l10n-id="spread_even_label">Even Spreads</span>
+                </button>
+
+                <div class="horizontalToolbarSeparator spreadModeButtons"></div>
+
+                <button id="documentProperties" class="secondaryToolbarButton documentProperties" title="Document Properties…" tabindex="68" data-l10n-id="document_properties">
+                    <span data-l10n-id="document_properties_label">Document Properties…</span>
+                </button>
+            </div>
+        </div>  <!-- secondaryToolbar -->
+
+        <div class="toolbar">
+            <div id="toolbarContainer">
+                <div id="toolbarViewer">
+                    <div id="toolbarViewerLeft">
+                        <button id="sidebarToggle" class="toolbarButton" title="Toggle Sidebar" tabindex="11" data-l10n-id="toggle_sidebar">
+                            <span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
+                        </button>
+                        <div class="toolbarButtonSpacer"></div>
+                        <button id="viewFind" class="toolbarButton hidden" title="Find in Document" tabindex="12" data-l10n-id="findbar">
+                            <span data-l10n-id="findbar_label">Find</span>
+                        </button>
+                        <div class="splitToolbarButton hiddenSmallView">
+                            <button class="toolbarButton pageUp" title="Previous Page" id="previous" tabindex="13" data-l10n-id="previous" disabled="">
+                                <span data-l10n-id="previous_label">Previous</span>
+                            </button>
+                            <div class="splitToolbarButtonSeparator"></div>
+                            <button class="toolbarButton pageDown" title="Next Page" id="next" tabindex="14" data-l10n-id="next">
+                                <span data-l10n-id="next_label">Next</span>
+                            </button>
+                        </div>
+                        <input type="number" id="pageNumber" class="toolbarField pageNumber" title="Page" value="1" size="4" min="1" tabindex="15" data-l10n-id="page" autocomplete="off" max="2">
+                        <span id="numPages" class="toolbarLabel">of 2</span>
+                    </div>
+                    <div id="toolbarViewerRight">
+                        <button id="presentationMode" class="toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
+                            <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+                        </button>
+
+                        <button id="openFile" class="toolbarButton openFile hiddenLargeView" title="Open File" tabindex="32" data-l10n-id="open_file" hidden="true">
+                            <span data-l10n-id="open_file_label">Open</span>
+                        </button>
+
+                        <button id="print" class="toolbarButton print hiddenMediumView" title="Print" tabindex="33" data-l10n-id="print">
+                            <span data-l10n-id="print_label">Print</span>
+                        </button>
+
+                        <button id="download" class="toolbarButton download hiddenMediumView" title="Download" tabindex="34" data-l10n-id="download">
+                            <span data-l10n-id="download_label">Download</span>
+                        </button>
+                        <a href="https://github.com/vanhorickanthony/CurriculumVitae/releases/download/resume_v1/resume.pdf#page=1&amp;zoom=auto,-41,862" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
+                            <span data-l10n-id="bookmark_label">Current View</span>
+                        </a>
+
+                        <div class="verticalToolbarSeparator hiddenSmallView"></div>
+
+                        <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="36" data-l10n-id="tools">
+                            <span data-l10n-id="tools_label">Tools</span>
+                        </button>
+                    </div>
+                    <div id="toolbarViewerMiddle">
+                        <div class="splitToolbarButton">
+                            <button id="zoomOut" class="toolbarButton zoomOut" title="Zoom Out" tabindex="21" data-l10n-id="zoom_out">
+                                <span data-l10n-id="zoom_out_label">Zoom Out</span>
+                            </button>
+                            <div class="splitToolbarButtonSeparator"></div>
+                            <button id="zoomIn" class="toolbarButton zoomIn" title="Zoom In" tabindex="22" data-l10n-id="zoom_in">
+                                <span data-l10n-id="zoom_in_label">Zoom In</span>
+                            </button>
+                        </div>
+                        <span id="scaleSelectContainer" class="dropdownToolbarButton">
+                  <select id="scaleSelect" title="Zoom" tabindex="23" data-l10n-id="zoom">
+                    <option id="pageAutoOption" title="" value="auto" selected="selected" data-l10n-id="page_scale_auto">Automatic Zoom</option>
+                    <option id="pageActualOption" title="" value="page-actual" data-l10n-id="page_scale_actual">Actual Size</option>
+                    <option id="pageFitOption" title="" value="page-fit" data-l10n-id="page_scale_fit">Page Fit</option>
+                    <option id="pageWidthOption" title="" value="page-width" data-l10n-id="page_scale_width">Page Width</option>
+                    <option id="customScaleOption" title="" value="custom" disabled="disabled" hidden="true"></option>
+                    <option title="" value="0.5" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 50 }">50%</option>
+                    <option title="" value="0.75" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 75 }">75%</option>
+                    <option title="" value="1" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 100 }">100%</option>
+                    <option title="" value="1.25" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 125 }">125%</option>
+                    <option title="" value="1.5" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 150 }">150%</option>
+                    <option title="" value="2" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 200 }">200%</option>
+                    <option title="" value="3" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 300 }">300%</option>
+                    <option title="" value="4" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 400 }">400%</option>
+                  </select>
+                </span>
+                    </div>
+                </div>
+                <div id="loadingBar" class="hidden" style="width: calc(100% - 12px);">
+                    <div class="progress" style="height: 100%; width: 100%;">
+                        <div class="glimmer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <menu type="context" id="viewerContextMenu">
+            <menuitem id="contextFirstPage" label="Go to First Page" data-l10n-id="first_page" title="Go to First Page"></menuitem>
+            <menuitem id="contextLastPage" label="Go to Last Page" data-l10n-id="last_page" title="Go to Last Page"></menuitem>
+            <menuitem id="contextPageRotateCw" label="Rotate Clockwise" data-l10n-id="page_rotate_cw" title="Rotate Clockwise"></menuitem>
+            <menuitem id="contextPageRotateCcw" label="Rotate Counterclockwise" data-l10n-id="page_rotate_ccw" title="Rotate Counterclockwise"></menuitem>
+        </menu>
+
+        <div id="viewerContainer" tabindex="0">
+            <div id="viewer" class="pdfViewer"><div class="page" style="width: 291px; height: 411px;" data-page-number="1" data-loaded="true"><div style="width: 291px; height: 411px;" class="canvasWrapper"><canvas moz-opaque="" width="291" height="412" style="width: 291px; height: 412px;" aria-label="Page 1"></canvas></div><div class="textLayer" style="width: 291px; height: 411px;"><span style="left: 78.2065px; top: 26.5183px; font-size: 15.5847px; font-family: sans-serif; transform: scaleX(0.85546);">Anthony</span><span style="left: 137.776px; top: 26.5183px; font-size: 15.5847px; font-family: sans-serif; transform: scaleX(0.974486);">VanHorick</span><span style="left: 107.288px; top: 44.6968px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.883302);">Nieuwmoerse Steenweg 8, 2990 Wuustwezel</span><span style="left: 63.9361px; top: 51.4035px; font-size: 3.31176px; font-family: sans-serif;">�</span><span style="left: 67.3614px; top: 51.1698px; font-size: 3.31176px; font-family: sans-serif; transform: scaleX(1.07153);">(+32)495663235 |</span><span style="left: 103.517px; top: 51.4035px; font-size: 3.31176px; font-family: sans-serif;">�</span><span style="left: 107.652px; top: 51.1698px; font-size: 3.31176px; font-family: sans-serif; transform: scaleX(0.938708);">vanhorickanthony@gmail.com |</span><span style="left: 160.388px; top: 51.4035px; font-size: 3.31176px; font-family: sans-serif;">�</span><span style="left: 164.05px; top: 51.1698px; font-size: 3.31176px; font-family: sans-serif; transform: scaleX(0.962365);">vanhorickanthony |</span><span style="left: 198.159px; top: 51.4035px; font-size: 3.31176px; font-family: sans-serif;">�</span><span style="left: 201.82px; top: 51.1698px; font-size: 3.31176px; font-family: sans-serif; transform: scaleX(0.893874);">vanhorickanthony</span><span style="left: 19.4px; top: 61.9024px; font-size: 7.79236px; font-family: sans-serif; transform: scaleX(0.898651);">Opleiding</span><span style="left: 19.4px; top: 75.55px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.896651);">Artesis-Plantijn Hogeschool</span><span style="left: 243.719px; top: 76.0292px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.764926);">2000 Antwerpen</span><span style="left: 19.4px; top: 83.1319px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.832472);">BSC.INELEKTRONICA-ICT</span><span style="left: 253.027px; top: 83.1319px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.738982);">2019-HEDEN</span><span style="left: 19.4px; top: 89.2766px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.808789);">Professionele bachelor-opleiding Elektronica-ICT met het oog op Cloud-specialisatie.</span><span style="left: 19.4px; top: 96.4478px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.896273);">Universiteit Antwerpen</span><span style="left: 243.719px; top: 96.927px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.764926);">2000 Antwerpen</span><span style="left: 19.4px; top: 104.03px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.834104);">BSC.INCOMPUTERSCIENCE</span><span style="left: 257.188px; top: 104.03px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.677148);">2015-2019</span><span style="left: 19.4px; top: 110.174px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.809116);">Academische bachelor-opleiding binnen de informatica.</span><span style="left: 19.4px; top: 117.346px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.880694);">Mater Salvatoris</span><span style="left: 247.453px; top: 117.825px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.76698);">2950 Kapellen</span><span style="left: 19.4px; top: 124.928px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.794405);">ASOWETENSCHAPPEN-WISKUNDE</span><span style="left: 256.549px; top: 124.928px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.70717);">2009-2015</span><span style="left: 19.4px; top: 131.072px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.796762);">Middelbare opleiding met focus op kritisch &amp; analytisch denken, en een oog op een verdere academische opleiding.</span><span style="left: 19.4px; top: 143.286px; font-size: 7.79236px; font-family: sans-serif; transform: scaleX(0.88241);">Vaardigheden</span><span style="left: 54.1928px; top: 156.934px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.875229);">OS</span><span style="left: 65.4153px; top: 157.413px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.803669);">Windows 7/8/10, GNU/Linux Ubuntu, Cisco IOS</span><span style="left: 40.0592px; top: 163.557px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.92393);">IDE/Tools</span><span style="left: 65.4153px; top: 164.037px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.800396);">Eclipse, Webstorm/PyCharm/Rider, Docker, NGINX, Visual Studio</span><span style="left: 19.4px; top: 170.181px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.897406);">Programmeertalen</span><span style="left: 65.4153px; top: 170.661px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.785106);">C++, Python, JavaScript, CSS, HTML, (Postgre)SQL</span><span style="left: 33.5331px; top: 176.805px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.9076);">Frameworks</span><span style="left: 65.4153px; top: 177.284px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.797716);">Flask, REST API, VueJS, jQuery, Bootstrap</span><span style="left: 27.7524px; top: 183.428px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.896399);">Version control</span><span style="left: 65.4153px; top: 183.907px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.798867);">Git, GitHub, Bitbucket</span><span style="left: 25.2099px; top: 190.052px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.880682);">Gesproken talen</span><span style="left: 65.4153px; top: 190.531px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.786905);">Nederlands (moedertaal), Engels (zeer goed), Frans (matig)</span><span style="left: 19.4px; top: 202.746px; font-size: 7.79236px; font-family: sans-serif; transform: scaleX(0.894438);">Ervaring</span><span style="left: 19.4px; top: 216.393px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.906697);">Indoorkarting Noorderlaan</span><span style="left: 248.242px; top: 216.872px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.793593);">Studentenjob</span><span style="left: 19.4px; top: 223.975px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.767828);">BEDIENDE</span><span style="left: 253.027px; top: 223.975px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.738982);">2019-HEDEN</span><span style="left: 19.7099px; top: 229.909px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.812727);">• Ik werk sedert 2019 als bediende voor de indoorkarting Noorderlaan. Dit is vooral telefonisch contact leggen, inplannen en begeleiden van</span><span style="left: 23.608px; top: 235.242px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.80102);">klanten.</span><span style="left: 19.4px; top: 243.495px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.866567);">Horeca (Bar d’O, De Barreel)</span><span style="left: 248.242px; top: 243.974px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.793593);">Studentenjob</span><span style="left: 19.4px; top: 251.076px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.753974);">BARMAN</span><span style="left: 257.118px; top: 251.076px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.680443);">2018-2019</span><span style="left: 19.7099px; top: 257.011px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.781381);">• Ik heb een jaar lang gewerkt voor café De Barreel &amp; loungebar Bar d’O als barman. Op deze manier heb ik veel ervaring opgedaan in de horeca-</span><span style="left: 23.608px; top: 262.344px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.785518);">sector, meer specifiek als barman.</span><span style="left: 19.4px; top: 270.596px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.854388);">Koraal VZW</span><span style="left: 218.204px; top: 271.075px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.798946);">Part-time/full-time vakantiejob</span><span style="left: 19.4px; top: 278.178px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.760469);">ANIMATOR/HOOFDANIMATOR/COÖRDINATOR</span><span style="left: 257.153px; top: 278.178px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.678796);">2012-2016</span><span style="left: 19.7099px; top: 284.112px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.798245);">• Ik heb enkele jaren gewerkt voor Koraal VZW als animator/hoofdanimator op hun speelpleinen te Schoten, Merksem en Ekeren.</span><span style="left: 23.608px; top: 289.445px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.800129);">Uiteindelijk werd ik benoemd als coördinator van speelplein Zeppelin te Ekeren.</span><span style="left: 23.608px; top: 294.778px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.787881);">Hierbij deed ik toch wel enige ervaring op als o.a. verantwoordelijke van een team, de locatie op zich, en het managen van dit geheel.</span><span style="left: 19.4px; top: 308.073px; font-size: 7.79236px; font-family: sans-serif; transform: scaleX(0.90918);">Projecten</span><span style="left: 19.4px; top: 321.604px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.859799);">C Grammar Checker</span><span style="left: 19.4px; top: 329.186px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.79959);">EENC++-PROGRAMMADATMETEENGEGEVENCONTEXT-VRIJE(C)GRAMMATICACODENAKIJKTENVERBETERD.</span><span style="left: 19.7099px; top: 335.12px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.80348);">• Een groepsproject, waarvoor ik een slimme LR-Parser heb uitgewerkt. Hier wordt eerst een lexicale analyse uitgevoerd, waarna de LR-parser</span><span style="left: 23.608px; top: 340.453px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.783289);">de tokens nakijkt, en na een eventuele fout in die tekst een serie van juiste opeenvolgende ’tokens’ geeft.</span><span style="left: 19.4px; top: 348.706px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.858517);">Database Cleaner</span><span style="left: 19.4px; top: 356.287px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.792817);">GROTEHOEVEELHEDENDATAOPSCHONENADHVEENGEBRUIKSVRIENDELIJKEINTERFACE.</span><span style="left: 19.7099px; top: 362.222px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.806855);">• Met een aantal medestudenten heb ik een data-cleaning WebApp uitgewerkt. Hiervoor nam ik zowel gedeeltelijks back-end als front-end op</span><span style="left: 23.608px; top: 367.555px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.786676);">mij, en werkte ik met oa. Flask, PostgreSQL, SQLAlchemy, jQuery, Bootstrap etc.</span><span style="left: 19.4px; top: 394.345px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.811521);">10MEI2020</span><span style="left: 110.84px; top: 394.345px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.833016);">ANTHONYVANHORICK · CURRICULUMVITAE</span><span style="left: 270.205px; top: 394.345px; font-size: 3.89618px; font-family: sans-serif;">1</span><div class="endOfContent"></div></div><div class="annotationLayer"><section data-annotation-id="7R" style="transform: matrix(0.488849, 0, 0, 0.488849, 0, 0); transform-origin: -210.761px -104.551px 0px; left: 210.761px; top: 104.551px; width: 103.102px; height: 8.936px;" class="linkAnnotation"><a title="mailto:vanhorickanthony@gmail.com" href="mailto:vanhorickanthony@gmail.com" target="" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="8R" style="transform: matrix(0.488849, 0, 0, 0.488849, 0, 0); transform-origin: -327.097px -104.551px 0px; left: 327.097px; top: 104.551px; width: 64.03px; height: 8.936px;" class="linkAnnotation"><a title="https://github.com/vanhorickanthony" href="https://github.com/vanhorickanthony" target="" rel="noopener noreferrer nofollow"></a></section><section data-annotation-id="9R" style="transform: matrix(0.488849, 0, 0, 0.488849, 0, 0); transform-origin: -404.361px -104.551px 0px; left: 404.361px; top: 104.551px; width: 64.031px; height: 8.936px;" class="linkAnnotation"><a title="https://www.linkedin.com/in/vanhorickanthony" href="https://www.linkedin.com/in/vanhorickanthony" target="" rel="noopener noreferrer nofollow"></a></section></div></div><div class="page" style="width: 291px; height: 411px;" data-page-number="2" data-loaded="true"><div style="width: 291px; height: 411px;" class="canvasWrapper"><canvas moz-opaque="" width="291" height="412" style="width: 291px; height: 412px;" aria-label="Page 2"></canvas></div><div class="textLayer" style="width: 291px; height: 411px;"><span style="left: 19.4px; top: 28.95px; font-size: 4.87023px; font-family: sans-serif; transform: scaleX(0.902429);">ESP Rework</span><span style="left: 19.4px; top: 36.5319px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.808252);">EENOPFRISSINGVANDEBESTAANDEESP-WEBSITEVANUANTWERPEN.</span><span style="left: 19.7099px; top: 42.4663px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.795725);">• In de opleiding Informatica werd ons gevraagd om voor het vak Programming Project Databases een website op te frissen en te herwerken. Ik</span><span style="left: 23.608px; top: 47.7992px; font-size: 4.38321px; font-family: sans-serif; transform: scaleX(0.794345);">nam hierbij front-end op mij, waaronder ook de API integratie, en een volledige Reactive gebruikservaring adhv VueJS.</span><span style="left: 19.4px; top: 394.345px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.811521);">10MEI2020</span><span style="left: 110.84px; top: 394.345px; font-size: 3.89618px; font-family: sans-serif; transform: scaleX(0.833016);">ANTHONYVANHORICK · CURRICULUMVITAE</span><span style="left: 269.835px; top: 394.345px; font-size: 3.89618px; font-family: sans-serif;">2</span><div class="endOfContent"></div></div></div></div>
+        </div>
+
+        <div id="errorWrapper" hidden="true">
+            <div id="errorMessageLeft">
+                <span id="errorMessage"></span>
+                <button id="errorShowMore" data-l10n-id="error_more_info">More Information</button>
+                <button id="errorShowLess" data-l10n-id="error_less_info" hidden="true">Less Information</button>
+            </div>
+            <div id="errorMessageRight">
+                <button id="errorClose" data-l10n-id="error_close">Close</button>
+            </div>
+            <div class="clearBoth"></div>
+            <textarea id="errorMoreInfo" readonly="readonly" hidden="true"></textarea>
+        </div>
+    </div> <!-- mainContainer -->
+
+    <div id="overlayContainer" class="hidden">
+        <div id="passwordOverlay" class="container hidden">
+            <div class="dialog">
+                <div class="row">
+                    <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file.</p>
+                </div>
+                <div class="row">
+                    <input type="password" id="password" class="toolbarField">
+                </div>
+                <div class="buttonRow">
+                    <button id="passwordCancel" class="overlayButton"><span data-l10n-id="password_cancel">Cancel</span></button>
+                    <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span></button>
+                </div>
+            </div>
+        </div>
+        <div id="documentPropertiesOverlay" class="container hidden">
+            <div class="dialog">
+                <div class="row">
+                    <span data-l10n-id="document_properties_file_name">File name:</span> <p id="fileNameField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_file_size">File size:</span> <p id="fileSizeField">-</p>
+                </div>
+                <div class="separator"></div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_title">Title:</span> <p id="titleField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_author">Author:</span> <p id="authorField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_subject">Subject:</span> <p id="subjectField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_keywords">Keywords:</span> <p id="keywordsField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_creation_date">Creation Date:</span> <p id="creationDateField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_modification_date">Modification Date:</span> <p id="modificationDateField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_creator">Creator:</span> <p id="creatorField">-</p>
+                </div>
+                <div class="separator"></div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_producer">PDF Producer:</span> <p id="producerField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_version">PDF Version:</span> <p id="versionField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_page_count">Page Count:</span> <p id="pageCountField">-</p>
+                </div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_page_size">Page Size:</span> <p id="pageSizeField">-</p>
+                </div>
+                <div class="separator"></div>
+                <div class="row">
+                    <span data-l10n-id="document_properties_linearized">Fast Web View:</span> <p id="linearizedField">-</p>
+                </div>
+                <div class="buttonRow">
+                    <button id="documentPropertiesClose" class="overlayButton"><span data-l10n-id="document_properties_close">Close</span></button>
+                </div>
+            </div>
+        </div>
+    </div>  <!-- overlayContainer -->
+
+</div> <!-- outerContainer -->
+<div id="printContainer"></div>
+
+
+
+</body></html>
