@@ -22,11 +22,11 @@ jobs:
     
     - run: mkdir -p pdfs/
 
-    - name: Upload artifact
+    - name: Download artifact
       uses: actions/upload-artifact@v2
       with:
         name: resume.pdf
-        path: pdfs/
+        path: pdfs
 
     - name: Release PDF
       uses: ncipollo/release-action@v1
