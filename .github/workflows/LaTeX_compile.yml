@@ -20,7 +20,7 @@ jobs:
         root_file: resume.tex
         compiler: lualatex
     
-    - run: mkdir -p /pdfs
+    - run: mkdir -p pdfs/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
