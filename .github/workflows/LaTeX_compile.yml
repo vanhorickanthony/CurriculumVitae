@@ -25,8 +25,8 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: resume
-        path: pdfs/resume.pdf
+        name: resume.pdf
+        path: pdfs/
 
     - name: Release PDF
       uses: ncipollo/release-action@v1
