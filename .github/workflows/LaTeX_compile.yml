@@ -23,7 +23,7 @@ jobs:
     - run: mkdir -p pdfs/
 
     - name: Download artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/download-artifact@v2
       with:
         name: resume
         path: pdfs/resume.pdf
