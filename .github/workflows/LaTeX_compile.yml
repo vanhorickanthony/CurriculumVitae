@@ -28,4 +28,5 @@ jobs:
       with:
         artifacts: "resume.pdf"
         token: ${{ secrets.GITHUB_TOKEN }}
-        tag: resume_v1
+        tag: resume
+        allowUpdates: 'true'
