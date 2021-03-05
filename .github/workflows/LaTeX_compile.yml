@@ -10,27 +10,22 @@ jobs:
   build:
     name: Compile LaTeX document
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-        
-    - name: Compile LaTeX document
+      
+    - name: Compile to PDF
       uses: xu-cheng/latex-action@v2
       with:
         root_file: resume.tex
         compiler: lualatex
-    
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      id: resume-download
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
       with:
         name: resume
         path: resume.pdf
-
     - name: Release PDF
       uses: ncipollo/release-action@v1
       with:
         artifacts: "resume.pdf"
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: resume_v1
-     
