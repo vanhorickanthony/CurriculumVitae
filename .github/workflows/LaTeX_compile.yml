@@ -13,18 +13,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
-    - name: Compile to PDF
-      uses: dante-ev/latex-action@v0.2.0
+        
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v2
       with:
         root_file: resume.tex
         compiler: lualatex
     
     - name: Download artifact
       uses: actions/download-artifact@v2
+      id: resume-download
       with:
         name: resume
-        path: .
+        path: resume.pdf
 
     - name: Release PDF
       uses: ncipollo/release-action@v1
