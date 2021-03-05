@@ -20,13 +20,11 @@ jobs:
         root_file: resume.tex
         compiler: lualatex
     
-    - run: mkdir -p pdfs/
-
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
         name: resume
-        path: pdfs/resume.pdf
+        path: .
 
     - name: Release PDF
       uses: ncipollo/release-action@v1
